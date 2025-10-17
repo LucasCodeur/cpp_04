@@ -6,7 +6,7 @@
 #    By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/18 12:51:21 by lud-adam          #+#    #+#              #
-#    Updated: 2025/10/10 16:03:40 by lud-adam         ###   ########.fr        #
+#    Updated: 2025/10/13 11:33:06 by lud-adam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,14 @@ SRC = main.cpp \
 	  Animal.cpp \
 	  Dog.cpp \
 	  Cat.cpp \
+	  WrongAnimal.cpp \
+	  WrongCat.cpp \
 
 INC = Animal.hpp \
 	  Dog.hpp \
 	  Cat.hpp \
+	  WrongAnimal.hpp \
+	  WrongCat.hpp \
 
 SRCS = \
 	$(addprefix $(P_SRC), $(SRC)) \

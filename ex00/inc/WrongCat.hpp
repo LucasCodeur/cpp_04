@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 20:11:25 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/10/14 20:12:29 by lud-adam         ###   ########.fr       */
+/*   Created: 2025/10/13 11:23:22 by lud-adam          #+#    #+#             */
+/*   Updated: 2025/10/13 11:32:07 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 #include <iostream>
 
-class Brain {
+#include "WrongAnimal.hpp"
+
+class WrongCat : public WrongAnimal {
 	public:
-		Brain();
-		~Brain();
-		Brain(const Brain &other);
-		Brain &operator=(const Brain &other);
-
-		std::string	ideas[100];
+		WrongCat();										//Default constructor
+		~WrongCat();									//Destructor
+		WrongCat(const WrongCat &other);				//Copy constructor
+		WrongCat &operator=(const WrongCat &other);		//Copy operator
 	private:
-		void	copyArrayOfStrings(std::string strs[]);
-
+		std::string	getType(void) const;
+		void	makeSound(void) const;
 };
 #endif

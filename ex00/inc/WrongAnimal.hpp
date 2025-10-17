@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 20:11:25 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/10/14 20:12:29 by lud-adam         ###   ########.fr       */
+/*   Created: 2025/10/10 15:22:54 by lud-adam          #+#    #+#             */
+/*   Updated: 2025/10/13 11:33:35 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 #include <iostream>
 
-class Brain {
+class WrongAnimal
+{
 	public:
-		Brain();
-		~Brain();
-		Brain(const Brain &other);
-		Brain &operator=(const Brain &other);
+		WrongAnimal();
+		~WrongAnimal();
+		WrongAnimal(const WrongAnimal &other);
+		WrongAnimal &operator=(const WrongAnimal &other);
 
-		std::string	ideas[100];
-	private:
-		void	copyArrayOfStrings(std::string strs[]);
-
+		std::string	getType(void) const;
+		void	makeSound(void) const;
+	protected:
+		std::string _type;
 };
 #endif

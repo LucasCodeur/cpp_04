@@ -17,16 +17,21 @@ Brain::Brain()
 	std::cout << "Default brain constructor called" << std::endl;
 }
 
-Brain::Brain(const Brain &other) : /* copy field */
+Brain::Brain(const Brain &other)
 {
 	std::cout << "Copy brain constructor called" << std::endl;
+	for (int i = 0; other.ideas[i].empty() != true; i++)
+		this->ideas[i] = other.ideas[i];
 }
 
 Brain	&Brain::operator=(const Brain &other)
 {
 	std::cout << "Copy brain assignment operator called" << std::endl;
 	if (this != &other)
-		//copy field
+	{
+		for (int i = 0; other.ideas[i].empty() != true; i++)
+			this->ideas[i] = other.ideas[i];
+	}
 	return (*this);
 }
 

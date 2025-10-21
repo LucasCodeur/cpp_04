@@ -23,8 +23,8 @@ class Brain {
 		Brain &operator=(const Brain &other);
 
 		std::string	ideas[100];
+		void	printIdeas(void) const;
+		void	setIdea(std::string);
 	private:
-		void	copyArrayOfStrings(std::string strs[]);
-
 };
 #endif

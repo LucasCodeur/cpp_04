@@ -21,13 +21,15 @@
 class Dog : public Animal
 {
 	public:
-		Dog();								//Default constructor
-		~Dog();								//Destructor
-		Dog(const Dog &other);				//Copy constructor
-		Dog &operator=(const Dog &other);	//Copy operator
+		Dog();
+		~Dog();
+		Dog(const Dog &other);
+		Dog &operator=(const Dog &other);
 
 		std::string	getType(void) const;
-		void	makeSound(void) const;
+		void		makeSound(void) const;
+		void		printBrainIdeas(void) const;
+		void		setIdeas(std::string idea);
 	private:
 		Brain* _Brain;
 };

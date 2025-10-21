@@ -17,9 +17,10 @@ Cat::Cat()
 	std::cout << "Default Cat constructor called" << std::endl;
 	this->_type = "Cat";
 	this->_Brain = new Brain;
+	this->_Brain->ideas[0] = "I'm a cat";
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other)
 {
 	std::cout << "Copy Cat constructor called" << std::endl;
 	this->_Brain = new Brain;

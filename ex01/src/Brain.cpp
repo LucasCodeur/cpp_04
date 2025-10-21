@@ -39,3 +39,23 @@ Brain::~Brain()
 {
 	std::cout << "Destructor brain called" << std::endl;
 }
+
+void	Brain::printIdeas(void) const
+{
+	for (int i = 0; ideas[i].empty() == false; i++)
+	{
+		std::cout << ideas[i] << std::endl;
+	}
+}
+
+void	Brain::setIdea(std::string idea)
+{
+	int	i = 0;
+
+	while (this->ideas[i].empty() == false)
+	{
+		std::cout << ideas[i] << std::endl;
+		i++;
+	}
+	this->ideas[i] = idea;
+}

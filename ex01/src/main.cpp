@@ -13,22 +13,28 @@
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
 int	main(void)
 {
-	Animal	arrayOfAnimal[4];
-	arrayOfAnimal[0] = Dog();
-	arrayOfAnimal[1] = Dog();
-	arrayOfAnimal[2] = Cat();
-	arrayOfAnimal[3] = Cat();
-	for (int i = 0; i < ((int)(sizeof(arrayOfAnimal) / sizeof(arrayOfAnimal[0]))); i++)
-		arrayOfAnimal[i].makeSound();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	delete j;//should not create a leak
-	delete i;
+	Animal	*arrayOfAnimal[4];
+	Dog		temp; 
+	Dog		temp2; 
 
+	arrayOfAnimal[0] = new Dog();
+	arrayOfAnimal[1] = new Dog();
+	arrayOfAnimal[2] = new Cat();
+	arrayOfAnimal[3] = new Cat();
+	for (int i = 0; i < 4; i++)
+	{
+		arrayOfAnimal[i]->makeSound();
+		delete arrayOfAnimal[i];
+	}
+	temp.setIdeas("One piece is the best manga of the world");
+	temp.printBrainIdeas();
+	std::cout << "temp2 before" << std::endl;
+	temp2.printBrainIdeas(); 
+	temp2 = temp;
+	std::cout << "temp2 after" << std::endl;
+	temp2.printBrainIdeas(); 
 	return (0);
 }

@@ -22,15 +22,34 @@ AMateria::AMateria(std::string const & type) : _type(type)
 	std::cout << "Parameterized Constructor of AMateria called" << std::endl;
 }
 
+AMateria::AMateria(AMateria &other) : _type(other._type)
+{
+	std::cout << "Copy Constructor of AMateria called" << std::endl;
+}
+
 AMateria::~AMateria(void)
 {
 	std::cout << "Deconstructor of AMateria called" << std::endl;
 }
 
-AMateria& AMateria::operator=(const AMateria &Other)
+AMateria& AMateria::operator=(const AMateria &other)
 {
-	if (this != &Other)
+	if (this != &other)
 	{
-		this->_type = Other._type;
+		this->_type = other._type;
 	}
+	return (*this);
+}
+
+std::string const & AMateria::getType(void) const
+{
+	return (this->_type);
+}
+
+void	AMateria::use(Icharacter& target)
+{
+	if (this->_type == "ice")
+		std::cout << "* shoots an ice bolt at " << target.getName() << " *"; 
+	else if (this->_type == "cure")
+		std::cout << "* heals " << target.getName() << "'s wounds *"; 
 }

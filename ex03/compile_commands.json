@@ -1,0 +1,40 @@
+[
+ {
+  "directory": "/home/eveil/code/42_projects/cpp/cpp_04/ex03",
+  "arguments": [
+   "c++",
+   "-MMD",
+   "-MP",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-std=c++98",
+   "-I",
+   "inc/",
+   "-c",
+   "src/main.cpp",
+   "-o",
+   ".obj/main.o"
+  ],
+  "file": "src/main.cpp"
+ },
+ {
+  "directory": "/home/eveil/code/42_projects/cpp/cpp_04/ex03",
+  "arguments": [
+   "c++",
+   "-MMD",
+   "-MP",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-std=c++98",
+   "-I",
+   "inc/",
+   "-c",
+   "src/AMateria.cpp",
+   "-o",
+   ".obj/AMateria.o"
+  ],
+  "file": "src/AMateria.cpp"
+ }
+]

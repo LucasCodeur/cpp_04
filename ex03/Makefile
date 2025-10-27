@@ -24,8 +24,10 @@ P_INC = inc/
 
 SRC = main.cpp \
 	  AMateria.cpp \
+	  Ice.cpp \
 
 INC = AMateria.hpp \
+	  Ice.hpp \
 
 SRCS = \
 	$(addprefix $(P_SRC), $(SRC)) \

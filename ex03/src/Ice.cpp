@@ -12,14 +12,25 @@
 
 #include "Ice.hpp"
 
-Ice::Ice(void) : _type("Void")
+Ice::Ice(void) 
 {
 	std::cout << "Default Constructor of Ice called" << std::endl;
+	this->_type = "ice";
 }
 
-Ice::Ice(std::string const & type) : _type(type)
+Ice::Ice(std::string const & type) : AMateria(type)
 {
 	std::cout << "Parameterized Constructor of Ice called" << std::endl;
+	this->_type = type;
+}
+
+Ice::Ice(Ice &other) : AMateria(other._type)
+{
+	std::cout << "Copy Constructor of Ice called" << std::endl;
+	if (this != &other)
+	{
+		this->_type = other._type;
+	}
 }
 
 Ice::~Ice(void)
@@ -27,10 +38,21 @@ Ice::~Ice(void)
 	std::cout << "Deconstructor of Ice called" << std::endl;
 }
 
-Ice& Ice::operator=(const Ice &Other)
+Ice& Ice::operator=(const Ice &other)
 {
-	if (this != &Other)
+	if (this != &other)
 	{
-		this->_type = Other._type;
+		this->_type = other._type;
 	}
+	return (*this);
+}
+
+Ice* Ice::clone(void) const
+{
+	Ice*	newIce;
+
+	newIce = new Ice;
+	if (newIce == NULL)
+		return (NULL);
+	return (newIce);
 }

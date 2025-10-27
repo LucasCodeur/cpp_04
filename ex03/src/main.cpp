@@ -14,6 +14,9 @@
 
 int	main(void)
 {
-	Ice Ice();
+	Ice test;
+	Ice* newTest;
+
+	newTest = test.clone();
 	return (0);
 }

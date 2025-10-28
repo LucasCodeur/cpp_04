@@ -6,7 +6,7 @@
 #    By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/18 12:51:21 by lud-adam          #+#    #+#              #
-#    Updated: 2025/10/28 17:18:44 by lud-adam         ###   ########.fr        #
+#    Updated: 2025/10/13 11:33:06 by lud-adam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 DEPENDANCIES = -MMD -MP
-NAME = InterfaceAndRecap
+NAME = AbstractClass
 # Debugging flags
 CFLAGS_DEBUG = -Wall -Wextra -pthread -g3 -D DEBUG=1
 
@@ -23,18 +23,19 @@ P_OBJ = .obj/
 P_INC = inc/
 
 SRC = main.cpp \
-	  AMateria.cpp \
-	  Ice.cpp \
-	  Character.cpp \
-	  Node.cpp \
-	  LinkedList.cpp
+	  Animal.cpp \
+	  Dog.cpp \
+	  Cat.cpp \
+	  WrongAnimal.cpp \
+	  WrongCat.cpp \
+	  Brain.cpp \
 
-INC = AMateria.hpp \
-	  Ice.hpp \
-	  ICharacter.hpp \
-	  Character.hpp \
-	  Node.hpp \
-	  LinkedList.hpp
+INC = Animal.hpp \
+	  Dog.hpp \
+	  Cat.hpp \
+	  WrongAnimal.hpp \
+	  WrongCat.hpp \
+	  Brain.hpp \
 
 SRCS = \
 	$(addprefix $(P_SRC), $(SRC)) \

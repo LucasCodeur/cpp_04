@@ -6,11 +6,12 @@
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 18:25:28 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/10/24 19:17:38 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/10/28 19:31:30 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
+#include "ICharacter.hpp"
 
 Ice::Ice(void) 
 {
@@ -52,7 +53,10 @@ Ice* Ice::clone(void) const
 	Ice*	newIce;
 
 	newIce = new Ice;
-	if (newIce == NULL)
-		return (NULL);
 	return (newIce);
+}
+
+void	Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

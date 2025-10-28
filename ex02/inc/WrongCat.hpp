@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 17:14:11 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/10/28 18:22:13 by lud-adam         ###   ########.fr       */
+/*   Created: 2025/10/13 11:23:22 by lud-adam          #+#    #+#             */
+/*   Updated: 2025/10/13 11:32:07 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 #include <iostream>
 
-class AMateria;
+#include "WrongAnimal.hpp"
 
-class ICharacter
-{
+class WrongCat : public WrongAnimal {
 	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
+		WrongCat();										//Default constructor
+		~WrongCat();									//Destructor
+		WrongCat(const WrongCat &other);				//Copy constructor
+		WrongCat &operator=(const WrongCat &other);		//Copy operator
 	private:
-		std::string	_name;
+		std::string	getType(void) const;
+		void	makeSound(void) const;
 };
-
 #endif

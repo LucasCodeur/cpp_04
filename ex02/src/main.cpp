@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 17:14:11 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/10/28 18:22:13 by lud-adam         ###   ########.fr       */
+/*   Created: 2025/10/10 15:27:42 by lud-adam          #+#    #+#             */
+/*   Updated: 2025/10/16 17:22:38 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
-#include <iostream>
-
-class AMateria;
-
-class ICharacter
+int	main(void)
 {
-	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
-	private:
-		std::string	_name;
-};
+	// Animal	animal;
+	Dog		temp; 
 
-#endif
+	temp.makeSound();
+	return (0);
+}

@@ -10,11 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
 #include <string>
 #include <iostream>
+
+#include "ICharacter.hpp"
 
 class AMateria
 {

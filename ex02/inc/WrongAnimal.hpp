@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 17:14:11 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/10/28 18:22:13 by lud-adam         ###   ########.fr       */
+/*   Created: 2025/10/10 15:22:54 by lud-adam          #+#    #+#             */
+/*   Updated: 2025/10/13 11:33:35 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 #include <iostream>
 
-class AMateria;
-
-class ICharacter
+class WrongAnimal
 {
 	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
-	private:
-		std::string	_name;
-};
+		WrongAnimal();
+		~WrongAnimal();
+		WrongAnimal(const WrongAnimal &other);
+		WrongAnimal &operator=(const WrongAnimal &other);
 
+		std::string	getType(void) const;
+		void	makeSound(void) const;
+	protected:
+		std::string _type;
+};
 #endif

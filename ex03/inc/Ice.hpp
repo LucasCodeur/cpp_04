@@ -31,7 +31,7 @@ class Ice : public AMateria
 		std::string const & getType() const;
 
 		Ice* clone() const;
-		// virtual void use(ICharacter& target);
+		void use(ICharacter& target);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 18:37:36 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/10/24 19:02:54 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:29:11 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ std::string const & AMateria::getType(void) const
 	return (this->_type);
 }
 
-void	AMateria::use(Icharacter& target)
+void	AMateria::use(ICharacter& target)
 {
-	if (this->_type == "ice")
-		std::cout << "* shoots an ice bolt at " << target.getName() << " *"; 
-	else if (this->_type == "cure")
-		std::cout << "* heals " << target.getName() << "'s wounds *"; 
+		std::cout << "No type, nothing for " << target.getName() << std::endl; 
 }

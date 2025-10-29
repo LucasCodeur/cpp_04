@@ -37,7 +37,7 @@ LinkedList::~LinkedList()
 {
 	std::cout << "Destructor LinkedList called" << std::endl;
 	Node*	temp = this->_head->getNext();
-	while (temp != this->_head)
+	while (temp != this->_head )
 	{
 		Node*	temp2 = temp;
 		if (temp2 == NULL)

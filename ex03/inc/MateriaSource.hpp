@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   LinkedList.hpp                                     :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 17:09:36 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/10/28 17:44:45 by lud-adam         ###   ########.fr       */
+/*   Created: 2025/10/29 13:59:15 by lud-adam          #+#    #+#             */
+/*   Updated: 2025/10/29 15:17:10 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINKEDLIST_HPP
-# define LINKEDLIST_HPP
-
-#include "AMateria.hpp"
-#include "Node.hpp"
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
 #include <iostream>
 
-class LinkedList
+#include "IMateriaSource.hpp"
+#include "LinkedList.hpp"
+
+class MateriaSource : public IMateriaSource
 {
 	public:
-		LinkedList();
-		~LinkedList();
-		void add(AMateria* ptr);
+		MateriaSource();
+		~MateriaSource();
+		MateriaSource(const MateriaSource &other);
+		MateriaSource &operator=(const MateriaSource &other);
+		void		learnMateria(AMateria* type);
+		AMateria*	createMateria(std::string const & type);
 	private:
-		LinkedList(const LinkedList &other);
-		LinkedList &operator=(const LinkedList &other);
-		Node*	_head;
+		AMateria*	_inventory[4];
+		LinkedList*	floor;
 };
 #endif

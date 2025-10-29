@@ -31,6 +31,7 @@ Cure::Cure(Cure &other) : AMateria(other._type)
 	if (this != &other)
 	{
 		this->_type = other._type;
+		this->equipped = other.equipped;
 	}
 }
 
@@ -44,6 +45,7 @@ Cure& Cure::operator=(const Cure &other)
 	if (this != &other)
 	{
 		this->_type = other._type;
+		this->equipped = other.equipped;
 	}
 	return (*this);
 }

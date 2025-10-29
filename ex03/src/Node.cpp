@@ -44,8 +44,8 @@ Node	&Node::operator=(const Node &other)
 Node::~Node()
 {
 	std::cout << "Destructor node called" << std::endl;
-	// if (this->_ptr != NULL)
-	// 	delete this->_ptr;
+	if (this->_ptr != NULL)
+		delete this->_ptr;
 }
 
 void	Node::setPtr(AMateria* new_ptr)

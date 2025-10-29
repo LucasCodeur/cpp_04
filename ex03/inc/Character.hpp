@@ -19,11 +19,6 @@
 #include "AMateria.hpp"
 #include "LinkedList.hpp"
 
-struct	inventory
-{
-	AMateria*	slots[4];
-	LinkedList*	floor;
-};
 
 class Character : public ICharacter
 {
@@ -37,10 +32,10 @@ class Character : public ICharacter
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);	
-		
 	private:
 		std::string _name;
-		inventory	_inventory;
+		AMateria*	_inventory[4];
+		LinkedList*	floor;
 };
 
 #endif

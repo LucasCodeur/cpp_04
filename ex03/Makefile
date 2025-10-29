@@ -6,7 +6,7 @@
 #    By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/18 12:51:21 by lud-adam          #+#    #+#              #
-#    Updated: 2025/10/28 17:18:44 by lud-adam         ###   ########.fr        #
+#    Updated: 2025/10/29 15:23:45 by lud-adam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,16 +25,21 @@ P_INC = inc/
 SRC = main.cpp \
 	  AMateria.cpp \
 	  Ice.cpp \
+	  Cure.cpp \
 	  Character.cpp \
 	  Node.cpp \
-	  LinkedList.cpp
+	  LinkedList.cpp \
+	  MateriaSource.cpp \
 
 INC = AMateria.hpp \
 	  Ice.hpp \
+	  Cure.hpp \
 	  ICharacter.hpp \
 	  Character.hpp \
 	  Node.hpp \
-	  LinkedList.hpp
+	  LinkedList.hpp \
+	  IMateriaSource.hpp \
+	  MateriaSource.hpp \
 
 SRCS = \
 	$(addprefix $(P_SRC), $(SRC)) \

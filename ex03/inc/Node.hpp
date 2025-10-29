@@ -21,8 +21,6 @@ class Node
 	public:
 		Node();
 		~Node();
-		Node(const Node &other);
-		Node &operator=(const Node &other);
 
 		void		setPtr(AMateria* newPtr);
 		void		setNext(Node* newNode);
@@ -31,6 +29,7 @@ class Node
 	private:
 		AMateria*	_ptr;
 		Node*		_next;
-
+		Node(const Node &other);
+		Node &operator=(const Node &other);
 };
 #endif

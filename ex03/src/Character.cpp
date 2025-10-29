@@ -17,9 +17,9 @@ Character::Character()
 {
 	std::cout << "Default Character constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
-		this->_inventory.slots[i] = NULL;
-	this->_inventory.floor = new (LinkedList);
+		this->_inventory[i] = NULL;
 	this->_name = "Bob";
+	this->floor = new (LinkedList);
 }
 
 Character::Character(const Character &other)
@@ -28,19 +28,19 @@ Character::Character(const Character &other)
 	if (this != &other)
 	{
 		for (int i = 0; i < 4; i++)
-			this->_inventory.slots[i] = other._inventory.slots[i];
+			this->_inventory[i] = other._inventory[i]->clone();
 		this->_name = other._name;
-		this->_inventory.floor = new (LinkedList);
 	}
+	this->floor = new (LinkedList);
 }
 
 Character::Character(std::string name)
 {
 	std::cout << "Copy Parameterized constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
-		this->_inventory.slots[i] = NULL;
-	this->_inventory.floor = new (LinkedList);
+		this->_inventory[i] = NULL;
 	this->_name = name;
+	this->floor = new (LinkedList);
 }
 
 Character	&Character::operator=(const Character &other)
@@ -49,7 +49,10 @@ Character	&Character::operator=(const Character &other)
 	if (this != &other)
 	{
 		for (int i = 0; i < 4; i++)
-			this->_inventory.slots[i] = other._inventory.slots[i];
+		{
+			this->unequip(i);
+			this->_inventory[i] = other._inventory[i]->clone();
+		}
 		this->_name = other._name;
 	}
 	return (*this);
@@ -58,8 +61,12 @@ Character	&Character::operator=(const Character &other)
 Character::~Character()
 {
 	std::cout << "Destructor Character called" << std::endl;
-	if (this->_inventory.floor != NULL)
-		delete this->_inventory.floor;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i] != NULL)
+			delete this->_inventory[i];
+	}
+	delete floor;
 }
 
 std::string const & Character::getName() const 
@@ -69,11 +76,17 @@ std::string const & Character::getName() const
 
 void	Character::equip(AMateria* m)
 {
+	if (m->getEquipped() == true)
+	{
+		std::cout << "Still equipped." << std::endl;
+		return ;
+	}
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_inventory.slots[i] == NULL)
+		if (this->_inventory[i] == NULL)
 		{
-			this->_inventory.slots[i] = m;
+			this->_inventory[i] = m;
+			this->_inventory[i]->setEquipped(true);
 			break ;
 		}
 	}
@@ -81,15 +94,22 @@ void	Character::equip(AMateria* m)
 
 void	Character::unequip(int idx)
 {
-	if (idx < 4 && idx > -1 && this->_inventory.slots[idx] != NULL)
+	if (idx < 4 && idx > -1)
 	{
-		this->_inventory.floor->add(this->_inventory.slots[idx]);
-		this->_inventory.slots[idx] = NULL;
+		if (this->_inventory[idx] == NULL)
+		{
+			std::cout << "There is nothing to take off." << std::endl;
+			return ;
+		}
+		this->_inventory[idx]->setEquipped(false);
+		if (this->_inventory[idx]->getMalloc() == true)
+			floor->add(this->_inventory[idx]);
+		this->_inventory[idx] = NULL;
 	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 4 && idx > -1 && this->_inventory.slots[idx] != NULL)
-		this->_inventory.slots[idx]->use(target);
+	if (idx < 4 && idx > -1 && this->_inventory[idx] != NULL)
+		this->_inventory[idx]->use(target);
 }

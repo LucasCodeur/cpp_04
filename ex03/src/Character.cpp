@@ -76,6 +76,11 @@ std::string const & Character::getName() const
 
 void	Character::equip(AMateria* m)
 {
+	if (m == NULL)
+	{
+		std::cout << "Doesn't exist." << std::endl;
+		return ;
+	}
 	if (m->getEquipped() == true)
 	{
 		std::cout << "Still equipped." << std::endl;

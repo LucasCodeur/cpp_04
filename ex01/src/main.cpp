@@ -30,6 +30,8 @@ int	main(void)
 		delete arrayOfAnimal[i];
 	}
 	temp.setIdeas("One piece is the best manga of the world");
+	temp.setIdeas("Berserk is good");
+	temp.setIdeas("Kingdom is very good");
 	temp.printBrainIdeas();
 	std::cout << "temp2 before" << std::endl;
 	temp2.printBrainIdeas(); 

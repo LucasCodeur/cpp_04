@@ -36,8 +36,10 @@ LinkedList	&LinkedList::operator=(const LinkedList &other)
 LinkedList::~LinkedList()
 {
 	std::cout << "Destructor LinkedList called" << std::endl;
+	if (_head == NULL)
+		return ;
 	Node*	temp = this->_head->getNext();
-	while (temp != this->_head )
+	while (temp != this->_head && temp != NULL)
 	{
 		Node*	temp2 = temp;
 		if (temp2 == NULL)

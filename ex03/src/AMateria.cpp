@@ -16,21 +16,21 @@ AMateria::AMateria(void) : _type("Void")
 {
 	std::cout << "Default Constructor of AMateria called" << std::endl;
 	this->equipped = false;
-	this->malloc = false;
+	this->stack = false;
 }
 
 AMateria::AMateria(std::string const & type) : _type(type)
 {
 	std::cout << "Parameterized Constructor of AMateria called" << std::endl;
 	this->equipped = false;
-	this->malloc = false;
+	this->stack = false;
 }
 
 AMateria::AMateria(AMateria &other) : _type(other._type)
 {
 	std::cout << "Copy Constructor of AMateria called" << std::endl;
 	this->equipped = false;
-	this->malloc = false;
+	this->stack = false;
 }
 
 AMateria::~AMateria(void)
@@ -44,7 +44,7 @@ AMateria& AMateria::operator=(const AMateria &other)
 	{
 		this->_type = other._type;
 		this->equipped = false;
-		this->malloc = false;
+		this->stack = false;
 	}
 	return (*this);
 }
@@ -69,12 +69,12 @@ bool	AMateria::getEquipped(void)
 	return (this->equipped);
 }
 
-void	AMateria::setMalloc(bool trueOrFalse)
+void	AMateria::setStack(bool trueOrFalse)
 {
-	this->malloc = trueOrFalse;
+	this->stack = trueOrFalse;
 }
 
-bool	AMateria::getMalloc(void)
+bool	AMateria::getStack(void)
 {
-	return (this->malloc);
+	return (this->stack);
 }

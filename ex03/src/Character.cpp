@@ -19,7 +19,7 @@ Character::Character()
 	for (int i = 0; i < 4; i++)
 		this->_inventory[i] = NULL;
 	this->_name = "Bob";
-	this->floor = new (LinkedList);
+	this->floor = new LinkedList;
 }
 
 Character::Character(const Character &other)
@@ -28,10 +28,15 @@ Character::Character(const Character &other)
 	if (this != &other)
 	{
 		for (int i = 0; i < 4; i++)
-			this->_inventory[i] = other._inventory[i]->clone();
+		{
+			if (other._inventory[i] && this->_inventory[i]->getStack() == false)
+				this->_inventory[i] = other._inventory[i]->clone();
+			else
+				this->_inventory[i] = NULL;
+		}
 		this->_name = other._name;
 	}
-	this->floor = new (LinkedList);
+	this->floor = new LinkedList;
 }
 
 Character::Character(std::string name)
@@ -40,22 +45,35 @@ Character::Character(std::string name)
 	for (int i = 0; i < 4; i++)
 		this->_inventory[i] = NULL;
 	this->_name = name;
-	this->floor = new (LinkedList);
+	this->floor = new LinkedList;
 }
 
-Character	&Character::operator=(const Character &other)
+Character &Character::operator=(const Character &other)
 {
 	std::cout << "Copy Character assignment operator called" << std::endl;
+
 	if (this != &other)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			this->unequip(i);
-			this->_inventory[i] = other._inventory[i]->clone();
+			if (this->_inventory[i])
+			{
+				delete this->_inventory[i];
+				this->_inventory[i] = NULL;
+			}
+		}
+		for (int i = 0; i < 4; i++)
+		{
+			if (other._inventory[i])
+				this->_inventory[i] = other._inventory[i]->clone();
+			else
+				this->_inventory[i] = NULL;
 		}
 		this->_name = other._name;
+		delete this->floor;
+		this->floor = new LinkedList;
 	}
-	return (*this);
+	return *this;
 }
 
 Character::~Character()
@@ -64,7 +82,10 @@ Character::~Character()
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_inventory[i] != NULL)
-			delete this->_inventory[i];
+		{
+			if (this->_inventory[i]->getStack() == false)
+				delete this->_inventory[i];
+		}
 	}
 	delete floor;
 }
@@ -107,7 +128,7 @@ void	Character::unequip(int idx)
 			return ;
 		}
 		this->_inventory[idx]->setEquipped(false);
-		if (this->_inventory[idx]->getMalloc() == true)
+		if (this->_inventory[idx]->getStack() == false)
 			floor->add(this->_inventory[idx]);
 		this->_inventory[idx] = NULL;
 	}

@@ -23,7 +23,7 @@ class AMateria
 	protected:
 		std::string	_type;
 		bool		equipped;
-		bool		malloc;
+		bool		stack;
 	public:
 		AMateria(void);
 		AMateria(std::string const & type);
@@ -34,8 +34,8 @@ class AMateria
 
 		virtual void	setEquipped(bool trueOrFalse);
 		virtual bool	getEquipped(void);
-		virtual void	setMalloc(bool trueOrFalse);
-		virtual bool	getMalloc(void);
+		virtual void	setStack(bool trueOrFalse);
+		virtual bool	getStack(void);
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);
 };

@@ -14,29 +14,29 @@
 #include "Cure.hpp"
 #include "Character.hpp"
 #include "MateriaSource.hpp"
-//
-// int	main(void)
-// {
-// 	try 
-// 	{
-// 		Ice			*test = new Ice;
-// 		Ice			test1;
-// 		test1.setStack(true);
-// 		Character*	Bob = new Character();
-// 		Character*	JeanMouloud = new Character();
-// 		Bob->equip(test);
-// 		Bob->equip(&test1);
-// 		*JeanMouloud = *Bob;
-// 		delete Bob;
-// 		delete JeanMouloud;
-// 	}
-// 	catch (const std::bad_alloc& e)
-// 	{
-// 		std::cout << "bad_alloc caught: " << e.what();
-// 		return (1);
-// 	}
-// 	return (0);
-// }
+
+int	main(void)
+{
+	try 
+	{
+		Ice			*test = new Ice;
+		Ice			test1;
+		test1.setStack(true);
+		Character*	Bob = new Character();
+		Character*	JeanMouloud = new Character();
+		Bob->equip(test);
+		Bob->equip(&test1);
+		*JeanMouloud = *Bob;
+		delete Bob;
+		delete JeanMouloud;
+	}
+	catch (const std::bad_alloc& e)
+	{
+		std::cout << "bad_alloc caught: " << e.what();
+		return (1);
+	}
+	return (0);
+}
 
 // int main()
 // {

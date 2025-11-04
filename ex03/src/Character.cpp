@@ -58,7 +58,8 @@ Character &Character::operator=(const Character &other)
 		{
 			if (this->_inventory[i])
 			{
-				delete this->_inventory[i];
+				if (this->_inventory[i]->getStack() == false)
+					delete this->_inventory[i];
 				this->_inventory[i] = NULL;
 			}
 		}

@@ -20,15 +20,17 @@ int	main(void)
 	try 
 	{
 		Ice			*test = new Ice;
-		Ice			test1;
-		test1.setStack(true);
+		// Ice			test1;
+		// test1.setStack(true);
 		Character*	Bob = new Character();
-		Character*	JeanMouloud = new Character();
+		// Character*	JeanMouloud = new Character();
+		std::cout << test << std::endl;
 		Bob->equip(test);
-		Bob->equip(&test1);
-		*JeanMouloud = *Bob;
+		Bob->unequip(0);
+		Bob->equip(test);
+		// *JeanMouloud = *Bob;
 		delete Bob;
-		delete JeanMouloud;
+		// delete JeanMouloud;
 	}
 	catch (const std::bad_alloc& e)
 	{

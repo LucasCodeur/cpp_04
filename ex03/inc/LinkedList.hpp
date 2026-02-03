@@ -24,6 +24,7 @@ class LinkedList
 		LinkedList();
 		~LinkedList();
 		void add(AMateria* ptr);
+		void remove(AMateria* ptr);
 	private:
 		LinkedList(const LinkedList &other);
 		LinkedList &operator=(const LinkedList &other);

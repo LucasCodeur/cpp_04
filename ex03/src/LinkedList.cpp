@@ -15,7 +15,7 @@
 LinkedList::LinkedList()
 {
 	std::cout << "Default LinkedList constructor called" << std::endl;
-	this->_head = new (Node);
+	this->_head = NULL;
 }
 
 LinkedList::LinkedList(const LinkedList &other)
@@ -57,7 +57,10 @@ void	LinkedList::add(AMateria* ptr)
 	Node*	newNode = new Node();
 	newNode->setPtr(ptr);
 	if (this->_head == NULL)
-		this->_head->setNext(newNode);
+	{
+		std::cout << "INSDEEEEEEEEEEEEEEEEEEEEEEEEEEE\n";
+		this->_head = newNode;
+	}
 	else
 	{
 		Node*	temp = this->_head;
@@ -65,4 +68,34 @@ void	LinkedList::add(AMateria* ptr)
 			temp = temp->getNext();
 		temp->setNext(newNode);
 	}
+}
+
+void	LinkedList::remove(AMateria* ptr)
+{
+	if (ptr == NULL)
+		return ;
+
+	Node*	temp = this->_head;
+	if (temp == NULL)
+		return ;
+
+	Node*	temp1 = NULL;
+
+	while (temp != NULL && temp->getPtr() != ptr)
+	{
+		temp1 = temp;
+		temp = temp->getNext();
+	}
+	if (temp1 != NULL && temp != NULL)
+		temp1->setNext(temp->getNext());
+	else
+	{
+		if (this->_head != NULL)
+		{
+			std::cout << "INSIDE THIS IF REMOVE FIFFERENT NULL\n";
+			delete this->_head;
+			this->_head = NULL;
+		}
+	}
+
 }

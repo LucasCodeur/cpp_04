@@ -85,7 +85,10 @@ Character::~Character()
 		if (this->_inventory[i] != NULL)
 		{
 			if (this->_inventory[i]->getStack() == false)
+			{
 				delete this->_inventory[i];
+				std::cout << "HEREREEEEEEE\n";
+			}
 		}
 	}
 	delete floor;
@@ -112,7 +115,9 @@ void	Character::equip(AMateria* m)
 	{
 		if (this->_inventory[i] == NULL)
 		{
+			floor->remove(m);
 			this->_inventory[i] = m;
+			std::cout  << "[EQUIP] Equip : "<< m << std::endl;
 			this->_inventory[i]->setEquipped(true);
 			break ;
 		}
@@ -121,6 +126,7 @@ void	Character::equip(AMateria* m)
 
 void	Character::unequip(int idx)
 {
+	std::cout << "[UNEQUIP]\n";
 	if (idx < 4 && idx > -1)
 	{
 		if (this->_inventory[idx] == NULL)

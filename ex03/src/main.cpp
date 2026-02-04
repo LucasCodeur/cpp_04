@@ -21,12 +21,12 @@ int	main(void)
 	{
 		Ice			*test = new Ice;
 		Cure		*test2 = new Cure;
-		// Cure		*test3 = new Cure;
-		// Ice			test1;
-		// test1.setStack(true);
+		Cure		*test3 = new Cure;
+		Ice			test1;
+		test1.setStack(true);
 		Character*	Bob = new Character();
-		// Character*	JeanMouloud = new Character();
-		// std::cout << test << std::endl;
+		Character*	JeanMouloud = new Character();
+		std::cout << test << std::endl;
 		Bob->equip(test);
 		Bob->unequip(0);
 		Bob->equip(test);
@@ -36,21 +36,22 @@ int	main(void)
 			std::cout << Bob->_inventory[i] << std::endl;
 		}
 		Bob->equip(test2);
-		// Bob->equip(test3);
-		// Bob->unequip(0);
+		Bob->equip(test3);
+		Bob->unequip(0);
 		for (int i = 0; i < 4; i++)
 		{
 			std::cout << Bob->_inventory[i] << std::endl;
 		}
-		Bob->unequip(1);
+		std::cout << "[Last unequip]\n";
+		Bob->unequip(0);
 		for (int i = 0; i < 4; i++)
 		{
 			std::cout << Bob->_inventory[i] << std::endl;
 		}
-		// Bob->unequip(2);
-		// *JeanMouloud = *Bob;
+		Bob->unequip(2);
+		*JeanMouloud = *Bob;
 		delete Bob;
-		// delete JeanMouloud;
+		delete JeanMouloud;
 	}
 	catch (const std::bad_alloc& e)
 	{

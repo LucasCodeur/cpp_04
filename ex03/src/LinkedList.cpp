@@ -50,14 +50,17 @@ LinkedList::~LinkedList()
 	}
 	while (temp != this->_head && temp != NULL)
 	{
+		std::cout << "[DESTRUCTOR LINKED LIST] main while\n";
 		Node*	temp2 = temp;
 		if (temp2 == NULL)
 			break ;
+		std::cout << "[DESTRUCTOR LINKED LIST] after temp2 == NULL\n";
 		temp = temp->getNext();
 		if (temp2->getPtr()->getStack() == false)
 			delete (temp2->getPtr());
 		delete temp2;
 	}
+	delete this->_head->getPtr();
 	delete this->_head;
 }
 
@@ -67,16 +70,25 @@ void	LinkedList::add(AMateria* ptr)
 		return ;
 	Node*	newNode = new Node();
 	newNode->setPtr(ptr);
+	std::cout << "[ADD] ptr node :" << this->_head << std::endl;
+	// std::cout << "[ADD] ptr materia :" << this->_head->getPtr() << std::endl;
 	if (this->_head == NULL)
 	{
-		std::cout << "INSDEEEEEEEEEEEEEEEEEEEEEEEEEEE\n";
+		std::cout << "[ADD] inside the if head = NULL\n";
 		this->_head = newNode;
+		std::cout << "[ADD] ptr node :" << this->_head << std::endl;
+		std::cout << "[ADD] ptr materia :" << ptr << std::endl;
 	}
 	else
 	{
+		std::cout << "[ADD] inside the else head != NULL\n";
 		Node*	temp = this->_head;
 		while (temp->getNext() != NULL)
+		{
+			std::cout << "[ADD] ptr node :" << this->_head << std::endl;
+			std::cout << "[ADD] ptr materia :" << temp->getPtr() << std::endl;
 			temp = temp->getNext();
+		}
 		temp->setNext(newNode);
 	}
 }
@@ -122,17 +134,22 @@ void LinkedList::remove(AMateria* ptr)
 
 	while (curr && curr->getPtr() != ptr)
 	{
+		std::cout << "[REMOVE] Inside main while\n";
+		std::cout << "[REMOVE] : " << curr << std::endl;
 		prev = curr;
 		curr = curr->getNext();
 	}
 
+	std::cout << "[REMOVE] : " << curr << std::endl;
 	if (!curr)
-		return; // not found
-
+	{
+		std::cout << "[REMOVE] : return\n";
+		return;
+	}
 	if (prev)
 		prev->setNext(curr->getNext());
 	else
-		_head = curr->getNext(); // removing head
-
+		_head = curr->getNext(); 
 	delete curr;
+	curr = NULL;
 }

@@ -85,10 +85,7 @@ Character::~Character()
 		if (this->_inventory[i] != NULL)
 		{
 			if (this->_inventory[i]->getStack() == false)
-			{
 				delete this->_inventory[i];
-				std::cout << "HEREREEEEEEE\n";
-			}
 		}
 	}
 	delete floor;
@@ -136,7 +133,10 @@ void	Character::unequip(int idx)
 		}
 		this->_inventory[idx]->setEquipped(false);
 		if (this->_inventory[idx]->getStack() == false)
+		{
+			std::cout << "[UNEQUIP] before floor add\n";
 			floor->add(this->_inventory[idx]);
+		}
 		this->_inventory[idx] = NULL;
 	}
 }

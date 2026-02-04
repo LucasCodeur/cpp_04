@@ -39,12 +39,23 @@ LinkedList::~LinkedList()
 	if (_head == NULL)
 		return ;
 	Node*	temp = this->_head->getNext();
+	if (temp == NULL)
+	{
+		if (this->_head)
+		{
+			if (this->_head->getPtr()->getStack() == false)
+				delete (this->_head->getPtr());
+
+		}
+	}
 	while (temp != this->_head && temp != NULL)
 	{
 		Node*	temp2 = temp;
 		if (temp2 == NULL)
 			break ;
 		temp = temp->getNext();
+		if (temp2->getPtr()->getStack() == false)
+			delete (temp2->getPtr());
 		delete temp2;
 	}
 	delete this->_head;
@@ -70,32 +81,58 @@ void	LinkedList::add(AMateria* ptr)
 	}
 }
 
-void	LinkedList::remove(AMateria* ptr)
+// void	LinkedList::remove(AMateria* ptr)
+// {
+// 	if (ptr == NULL)
+// 		return ;
+//
+// 	Node*	temp = this->_head;
+// 	if (temp == NULL)
+// 		return ;
+//
+// 	Node*	temp1 = NULL;
+//
+// 	while (temp != NULL && temp->getPtr() != ptr)
+// 	{
+// 		temp1 = temp;
+// 		temp = temp->getNext();
+// 	}
+// 	if (temp1 != NULL && temp != NULL)
+// 		temp1->setNext(temp->getNext());
+// 	else
+// 	{
+// 		if (this->_head != NULL)
+// 		{
+// 			std::cout << "INSIDE THIS IF REMOVE FIFFERENT NULL\n";
+// 			// delete this->_head;
+// 			this->_head = NULL;
+// 		}
+// 	}
+//
+// }
+
+
+void LinkedList::remove(AMateria* ptr)
 {
-	if (ptr == NULL)
-		return ;
+	if (!ptr || !_head)
+		return;
 
-	Node*	temp = this->_head;
-	if (temp == NULL)
-		return ;
+	Node* curr = _head;
+	Node* prev = NULL;
 
-	Node*	temp1 = NULL;
-
-	while (temp != NULL && temp->getPtr() != ptr)
+	while (curr && curr->getPtr() != ptr)
 	{
-		temp1 = temp;
-		temp = temp->getNext();
+		prev = curr;
+		curr = curr->getNext();
 	}
-	if (temp1 != NULL && temp != NULL)
-		temp1->setNext(temp->getNext());
+
+	if (!curr)
+		return; // not found
+
+	if (prev)
+		prev->setNext(curr->getNext());
 	else
-	{
-		if (this->_head != NULL)
-		{
-			std::cout << "INSIDE THIS IF REMOVE FIFFERENT NULL\n";
-			delete this->_head;
-			this->_head = NULL;
-		}
-	}
+		_head = curr->getNext(); // removing head
 
+	delete curr;
 }

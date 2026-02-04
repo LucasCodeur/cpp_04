@@ -23,6 +23,7 @@
 class Character : public ICharacter
 {
 	public:
+		AMateria*	_inventory[4];
 		Character();
 		~Character();
 		Character(const Character &other);
@@ -34,7 +35,6 @@ class Character : public ICharacter
 		void use(int idx, ICharacter& target);	
 	private:
 		std::string _name;
-		AMateria*	_inventory[4];
 		LinkedList*	floor;
 };
 

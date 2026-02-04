@@ -26,28 +26,17 @@ int	main(void)
 		test1.setStack(true);
 		Character*	Bob = new Character();
 		Character*	JeanMouloud = new Character();
-		std::cout << test << std::endl;
 		Bob->equip(test);
 		Bob->unequip(0);
 		Bob->equip(test);
 		Bob->unequip(0);
-		for (int i = 0; i < 4; i++)
-		{
-			std::cout << Bob->_inventory[i] << std::endl;
-		}
 		Bob->equip(test2);
 		Bob->equip(test3);
 		Bob->unequip(0);
-		for (int i = 0; i < 4; i++)
-		{
-			std::cout << Bob->_inventory[i] << std::endl;
-		}
-		std::cout << "[Last unequip]\n";
 		Bob->unequip(0);
-		for (int i = 0; i < 4; i++)
-		{
-			std::cout << Bob->_inventory[i] << std::endl;
-		}
+		Bob->unequip(2);
+		Bob->unequip(2);
+		Bob->unequip(2);
 		Bob->unequip(2);
 		*JeanMouloud = *Bob;
 		delete Bob;
